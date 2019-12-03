@@ -1,0 +1,31 @@
+---
+- name: Create User
+  user:
+    name: "{{ user.name }}"
+    password: "{{ user.password | password_hash('sha512') }}"
+    shell: "{{ user.shell | default('/bin/ash') }}"
+    state: present
+    create_home: yes
+    groups: "{{ user.groups | default([]) | join(',') }}"
+    update_password: always
+  no_log: yes
+  # notify:
+  #   - os:user:created
+
+- name: Create user ssh directory
+  file:
+    path: "/home/{{ user.name }}/.ssh/"
+    state: directory
+    owner: "{{ user.name }}"
+    group: "{{ user.name }}"
+    mode: "u=rwx"
+
+- name: Put user ssh public key
+  authorized_key:
+    user: "{{ user.name }}"
+    state: present
+    key: "{{ lookup('file', ssh_key.priv + '.pub') }}"
+  loop: "{{ user['ssh']['keys'] }}"
+  loop_control:
+    loop_var: ssh_key
+  no_log: yes

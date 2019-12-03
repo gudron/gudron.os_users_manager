@@ -1,0 +1,8 @@
+---
+- name: Inlcude Tasks
+  include_tasks: users/prepare_user.yml
+  vars:
+    user: "{{ user_params }}"
+  loop: "{{ users_list_params }}"
+  loop_control:
+    loop_var: user_params

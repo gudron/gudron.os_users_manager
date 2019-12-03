@@ -1,0 +1,15 @@
+---
+groups_list_params:
+  - name: example_group
+
+users_list_params:
+  - name: example_user
+    is_sudo: true
+    no_pwd_sudo: true
+    password: "example_password"
+    email: example@example.com
+    groups:
+      - sudo
+      - example_group
+    ssh_pub_keys:
+      - "{{lookup('file', 'resources/users/example_user_ssh.pub')}}"

@@ -1,0 +1,11 @@
+---
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_distribution }}.yml"
+
+- name: Inlcude create user tasks
+  include_tasks: "{{ tasks_name }}"
+  loop:
+    - create_groups.yml
+    - create_users.yml
+  loop_control:
+    loop_var: tasks_name
