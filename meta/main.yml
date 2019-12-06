@@ -27,7 +27,7 @@ galaxy_info:
 allow_duplicates: true    
 dependencies:
   - role: gudron.sudo
-    src: git@bitbucket.org:gdrn_cloud/gudron.sudo.git
+    src: git@github.com:gudron/gudron.sudo.git
     scm: git
     vars:
       users_list_params: "{{ users_list_params | selectattr('is_sudo', 'equalto', True) }}"
