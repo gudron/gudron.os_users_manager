@@ -11,5 +11,8 @@ users_list_params:
     groups:
       - sudo
       - example_group
-    ssh_pub_keys:
-      - "{{lookup('file', 'resources/users/example_user_ssh.pub')}}"
+    ssh:
+      keys:
+        - priv: /path/to/existen/ssh/key/ansible_example.pem
+          pub: /path/to/existen/ssh/key/ansible_example.pem.pub
+          comment: ansible_example
