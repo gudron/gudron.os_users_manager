@@ -8,9 +8,16 @@
     create_home: yes
     groups: "{{ user.groups | default([]) | join(',') }}"
     update_password: always
-  no_log: yes
+  no_log: no
+  when:
+    - ansible_distribution != 'Alpine'
   # notify:
   #   - os:user:created
+
+- name: Inlcude prepare Alpine user tasks
+  include_tasks: ./prepare_user_alpine.yml
+  when:
+    - ansible_distribution == 'Alpine'
 
 - name: Create user ssh directory
   file:

@@ -1,0 +1,23 @@
+---
+- name: Create user
+  command: "adduser -s {{ user.shell | default('/bin/ash') }} -D {{ user.name }}"
+  ignore_errors: true
+
+- name: Unlock user
+  command: "passwd -u {{ user.name }}"
+  ignore_errors: true
+
+- name: Add groups
+  command: "addgroup {{ group_name }}"
+  loop: "{{ user.groups | default([]) }}"
+  loop_control:
+    loop_var: group_name
+
+- name: Add user to groups
+  command: "addgroup {{ user.name }} {{ group_name }}"
+  loop: "{{ user.groups | default([]) }}"
+  loop_control:
+    loop_var: group_name
+
+- name: Set user password
+  command: "echo {{ user.name }}:{{ user.password | password_hash('sha512') }} | chpasswd"
