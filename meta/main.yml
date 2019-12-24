@@ -28,9 +28,4 @@ galaxy_info:
     - manage linux users and groups
 
 allow_duplicates: true
-dependencies:
-  - role: gudron.sudo
-    src: git@github.com:gudron/gudron.sudo.git
-    scm: git
-    vars:
-      users_list_params: "{{ users_list_params | selectattr('is_sudo', 'equalto', True) }}"
+dependencies: []
