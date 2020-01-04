@@ -1,8 +1,17 @@
 ---
 shells:
   dash:
+    bin_path: /bin/dash
     package_name: dash
+  bash:
+    bin_path: /bin/bash
+    package_name: bash
   ash:
+    bin_path: /bin/dash
     package_name: dash
   zsh:
+    bin_path: /bin/zsh
     package_name: zsh
+  sh:
+    bin_path: /bin/sh
+    package_name: sh
