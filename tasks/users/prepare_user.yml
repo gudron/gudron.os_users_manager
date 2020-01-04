@@ -3,7 +3,7 @@
   user:
     name: "{{ user.name }}"
     password: "{{ user.password | password_hash('sha512') }}"
-    shell: "{{ user.shell | default('/bin/ash') }}"
+    shell: "{{ shells[user.shell]['package_name'] | default('/bin/ash') }}"
     state: present
     create_home: yes
     groups: "{{ user.groups | default([]) | join(',') }}"
