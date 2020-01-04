@@ -1,0 +1,10 @@
+---
+shells:
+  dash:
+    package_name: ash
+  bash:
+    package_name: bash
+  ash:
+    package_name: ash
+  zsh:
+    package_name: zsh

@@ -1,1 +1,8 @@
 ---
+shells:
+  dash:
+    package_name: dash
+  ash:
+    package_name: dash
+  zsh:
+    package_name: zsh
