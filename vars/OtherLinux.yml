@@ -15,7 +15,7 @@ shells:
   sh:
     bin_path: /bin/sh
     package_name: sh
-  true:
+  "true":
     bin_path: /bin/true
-  false:
+  "false":
     bin_path: /bin/false
